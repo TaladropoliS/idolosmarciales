@@ -46,17 +46,10 @@
             })
       },
       buscarPeleador(id) {
-        console.log(this.$route.params.id)
-        console.log('****************')
-        console.log(id)
-
         fetch('peleadores.json')
             .then((response) => response.json())
             .then((data) => {
               for (let i of data) {
-                // console.log(i.id)
-                // console.log(i.nombre)
-                // console.log(i.imgSrc)
                 if (id === i.id) {
                   this.id = i.id
                   this.nombre = i.nombre
@@ -67,8 +60,6 @@
       },
     },
     created() {
-      console.log('-------------------')
-      console.log(this.$route.params.id)
       this.llamarListaPeleadores(this.$route.params.id);
       this.buscarPeleador(this.$route.params.id)
     }

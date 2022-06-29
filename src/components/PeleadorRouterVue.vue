@@ -30,9 +30,6 @@
             .then((response) => response.json())
             .then((data) => {
               for (let i of data) {
-                // console.log(i.id)
-                // console.log(i.nombre)
-                // console.log(i.imgSrc)
                 if (idP === i.id) {
                   this.id = i.id
                   this.nombre = i.nombre
@@ -43,7 +40,6 @@
       }
     },
     created() {
-      console.log(this.$route.params.id)
       let idP = this.$route.params.id
       this.buscarPeleador(idP)
     }
