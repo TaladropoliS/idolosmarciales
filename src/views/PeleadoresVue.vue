@@ -9,9 +9,8 @@
       </div>
     </div>
 
-    <!--                 :to="{name:'peleador', id:p.id}"-->
     <router-link v-for="(p, index) in listaPeleadores" :key="index"
-                 :to="`/peleador/${p.id}`" v-model="id">
+                 :to="irAPeleador(p.id)">
       <h3>{{ p.nombre }}</h3>
     </router-link>
 
@@ -20,22 +19,18 @@
 </template>
 
 <script>
-  import PeleadorRouterVue from "@/components/PeleadorRouterVue";
 
   export default {
     name: "PeleadoresVue",
-    components: {
-      PeleadorRouterVue
-    },
     data() {
       return {
-        id: '',
-        nombre: '',
-        imgSrc: '',
         listaPeleadores: [],
       }
     },
     methods: {
+      irAPeleador(pk) {
+        return `/peleador/${pk}`
+      },
       llamarListaPeleadores() {
         fetch('../peleadores.json')
             .then((response) => response.json())
@@ -45,23 +40,9 @@
               }
             })
       },
-      buscarPeleador(id) {
-        fetch('peleadores.json')
-            .then((response) => response.json())
-            .then((data) => {
-              for (let i of data) {
-                if (id === i.id) {
-                  this.id = i.id
-                  this.nombre = i.nombre
-                  this.imgSrc = i.imgSrc
-                }
-              }
-            })
-      },
     },
-    created() {
-      this.llamarListaPeleadores(this.$route.params.id);
-      this.buscarPeleador(this.$route.params.id)
+    mounted() {
+      this.llamarListaPeleadores();
     }
   }
 </script>

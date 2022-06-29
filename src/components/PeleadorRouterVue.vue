@@ -41,6 +41,7 @@
     },
     created() {
       let idP = this.$route.params.id
+      console.log(idP)
       this.buscarPeleador(idP)
     }
   }
