@@ -1,14 +1,51 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link class="text-decoration-none d-inline-block me-1 me-sm-2 me-md-5"
+                   to="/"><i class="fa-solid fa-user-ninja"></i> Peleadores
+      </router-link>
+      <router-link class="text-decoration-none d-inline-block"
+                   to="/buscador"><i class="fas fa-search"></i> Buscador
+      </router-link>
     </nav>
-    <router-view/>
+
+    <div class="container card p-5 mb-5">
+      <router-view/>
+    </div>
+
+    <FooterVue :yearActual="yearActual"/>
+
   </div>
 </template>
 
+<script>
+  import FooterVue from "@/components/FooterVue";
+
+  export default {
+    components: {
+      FooterVue
+    },
+    data() {
+      return {
+        yearActual: ''
+      }
+    },
+    methods: {
+      buscarYearActual() {
+        const fecha = new Date()
+        this.yearActual = fecha.getFullYear()
+      }
+    },
+    created() {
+      this.buscarYearActual()
+    }
+  }
+</script>
+
 <style lang="scss">
+.container{
+  min-height: 75vh !important;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
