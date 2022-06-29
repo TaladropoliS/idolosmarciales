@@ -9,33 +9,29 @@
       </div>
     </div>
 
+    <!--                 :to="{name:'peleador', id:p.id}"-->
     <router-link v-for="(p, index) in listaPeleadores" :key="index"
-                 :to="p.id"><h3>{{ p.nombre }}</h3></router-link>
+                 :to="`/peleador/${p.id}`" v-model="id">
+      <h3>{{ p.nombre }}</h3>
+    </router-link>
 
-    <router-view>
-      <PeleadorVue :id="id" :nombre="nombre" :imgSrc="imgSrc" :idSearch="idSearch"
-                   :encontrado="encontrado" :buscando="buscando"/>
-    </router-view>
 
   </div>
 </template>
 
 <script>
-  import PeleadorVue from "@/components/PeleadorVue";
+  import PeleadorRouterVue from "@/components/PeleadorRouterVue";
 
   export default {
     name: "PeleadoresVue",
     components: {
-      PeleadorVue
+      PeleadorRouterVue
     },
     data() {
       return {
         id: '',
         nombre: '',
         imgSrc: '',
-        idSearch: '',
-        encontrado: false,
-        buscando: false,
         listaPeleadores: [],
       }
     },
@@ -48,32 +44,32 @@
                 this.listaPeleadores.push(i)
               }
             })
-        console.log(this.listaPeleadores)
       },
-      buscarPeleador(idSearch) {
-        this.encontrado = false
-        this.buscando = !!idSearch; // true si idsearch     false si !idsearch
+      buscarPeleador(id) {
+        console.log(this.$route.params.id)
+        console.log('****************')
+        console.log(id)
 
         fetch('peleadores.json')
             .then((response) => response.json())
             .then((data) => {
               for (let i of data) {
-                console.log(i.id)
-                console.log(i.nombre)
-                console.log(i.imgSrc)
-                if (idSearch === i.id) {
+                // console.log(i.id)
+                // console.log(i.nombre)
+                // console.log(i.imgSrc)
+                if (id === i.id) {
                   this.id = i.id
                   this.nombre = i.nombre
                   this.imgSrc = i.imgSrc
-                  this.encontrado = true
-                  this.buscando = false
                 }
               }
             })
       },
     },
     created() {
-      this.llamarListaPeleadores();
+      console.log('-------------------')
+      console.log(this.$route.params.id)
+      this.llamarListaPeleadores(this.$route.params.id);
       this.buscarPeleador(this.$route.params.id)
     }
   }

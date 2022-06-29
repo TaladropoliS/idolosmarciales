@@ -19,42 +19,34 @@
     name: "PeleadorRouterVue",
     data() {
       return {
-        id: '',
-        nombre: '',
-        imgSrc: '',
-        idSearch: '',
-        encontrado: false,
-        buscando: false,
+        id: String,
+        nombre: String,
+        imgSrc: String
       }
     },
     methods: {
-      // buscarPeleador(idSearch) {
-      //   this.encontrado = false
-      //   this.buscando = !!idSearch; // true si idsearch     false si !idsearch
-      //
-      //   fetch('peleadores.json')
-      //       .then((response) => response.json())
-      //       .then((data) => {
-      //         for (let i of data) {
-      //           console.log(i.id)
-      //           console.log(i.nombre)
-      //           console.log(i.imgSrc)
-      //           if (idSearch === i.id) {
-      //             this.id = i.id
-      //             this.nombre = i.nombre
-      //             this.imgSrc = i.imgSrc
-      //             this.encontrado = true
-      //             this.buscando = false
-      //           }
-      //         }
-      //       })
-      // },
+      buscarPeleador(idP) {
+        fetch('../peleadores.json')
+            .then((response) => response.json())
+            .then((data) => {
+              for (let i of data) {
+                // console.log(i.id)
+                // console.log(i.nombre)
+                // console.log(i.imgSrc)
+                if (idP === i.id) {
+                  this.id = i.id
+                  this.nombre = i.nombre
+                  this.imgSrc = i.imgSrc
+                }
+              }
+            })
+      }
     },
-    // computed: {
-    //   LlamarBuscarPeleador() {
-    //     this.buscarPeleador(this.$route.params.id)
-    //   }
-    // }
+    created() {
+      console.log(this.$route.params.id)
+      let idP = this.$route.params.id
+      this.buscarPeleador(idP)
+    }
   }
 </script>
 
