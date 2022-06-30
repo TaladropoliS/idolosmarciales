@@ -16,6 +16,7 @@
       </div>
     </div>
 
+    <router-view/>
 
   </div>
 </template>
@@ -32,11 +33,11 @@
     },
     methods: {
       crearLink(idSearch) {
-        console.log(this.idSearch)
+        // console.log(this.idSearch)
         this.irAPeleador(idSearch)
       },
       irAPeleador(pk) {
-        console.log(pk)
+        // console.log(pk)
         return `/peleador/${pk}`
       },
     },

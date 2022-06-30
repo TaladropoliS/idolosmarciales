@@ -26,7 +26,7 @@ const routes = [
         component: () => import('../views/BuscadorRouterVue.vue')
     },
     {
-        path: '/*',
+        path: '*',
         name: 'notfound',
         component: () => import('../components/NotFoundVue.vue')
     },

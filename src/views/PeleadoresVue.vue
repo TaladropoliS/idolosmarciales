@@ -10,8 +10,9 @@
     </div>
 
     <router-link v-for="(p, index) in listaPeleadores" :key="index"
-                 :to="irAPeleador(p.id)">
-      <h3>{{ p.nombre }}</h3>
+                 :to="irAPeleador(p.id)" class="d-flex justify-content-center text-decoration-none text-success">
+      <p>{{ p.nombre }}</p>
+      <img :src="p.imgSrc" :alt="p.nombre" class="img-fluid ms-3">
     </router-link>
 
 
@@ -41,12 +42,16 @@
             })
       },
     },
-    mounted() {
+    created() {
       this.llamarListaPeleadores();
     }
   }
 </script>
 
 <style scoped>
-
+img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%
+}
 </style>
