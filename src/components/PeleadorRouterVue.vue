@@ -1,6 +1,7 @@
 <template>
-  <div v-if="id && nombre && imgSrc">
-    <div class="card bg-black text-light">
+  <div>
+
+    <div v-if="id && nombre && imgSrc" class="card bg-black text-light">
       <div class="card-title pt-3">
         <h3><b>{{ nombre }}</b></h3>
         <p><i>id:</i> {{ id }}</p>
