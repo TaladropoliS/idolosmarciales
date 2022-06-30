@@ -14,13 +14,15 @@
 </template>
 
 <script>
+  import router from "@/router";
+
   export default {
     name: "PeleadorRouterVue",
     data() {
       return {
         id: '',
         nombre: '',
-        imgSrc: ''
+        imgSrc: '',
       }
     },
     methods: {
@@ -35,8 +37,11 @@
                   this.imgSrc = i.imgSrc
                 }
               }
+              if (this.id === '') {
+                router.push({path: '/no_existe'})
+              }
             })
-      }
+      },
     },
     created() {
       let idP = this.$route.params.id
