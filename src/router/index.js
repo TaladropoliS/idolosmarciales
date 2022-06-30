@@ -21,9 +21,19 @@ const routes = [
         component: () => import('../views/BuscadorView.vue')
     },
     {
-        path: '*',
+        path: '/buscadorrouter',
+        name: 'buscadorrouter',
+        component: () => import('../views/BuscadorRouterVue.vue')
+    },
+    {
+        path: '/*',
         name: 'notfound',
         component: () => import('../components/NotFoundVue.vue')
+    },
+    {
+        path: '/peleador/*',
+        name: 'notpeleador',
+        component: () => import('../components/NotPeleadorVue.vue')
     },
 ]
 

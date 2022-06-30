@@ -4,8 +4,11 @@
       <router-link class="text-decoration-none d-inline-block me-1 me-sm-2 me-md-5"
                    to="/"><i class="fa-solid fa-user-ninja"></i> Peleadores
       </router-link>
+      <router-link class="text-decoration-none d-inline-block me-1 me-sm-2 me-md-5"
+                   to="/buscadorrouter"><i class="fas fa-search"></i> Router
+      </router-link>
       <router-link class="text-decoration-none d-inline-block"
-                   to="/buscador"><i class="fas fa-search"></i> Buscador
+                   to="/buscador"><i class="fas fa-search"></i> Simple
       </router-link>
     </nav>
 

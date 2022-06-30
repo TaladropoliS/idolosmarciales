@@ -23,7 +23,7 @@
   import PeleadorVue from "@/components/PeleadorVue";
 
   export default {
-    name: "encontradorView",
+    name: "buscadorView",
     components: {
       PeleadorVue
     },

@@ -1,6 +1,5 @@
 <template>
-  <div>
-
+  <div v-if="id && nombre && imgSrc">
     <div class="card bg-black text-light">
       <div class="card-title pt-3">
         <h3><b>{{ nombre }}</b></h3>
@@ -19,9 +18,9 @@
     name: "PeleadorRouterVue",
     data() {
       return {
-        id: String,
-        nombre: String,
-        imgSrc: String
+        id: '',
+        nombre: '',
+        imgSrc: ''
       }
     },
     methods: {
@@ -41,7 +40,6 @@
     },
     created() {
       let idP = this.$route.params.id
-      console.log(idP)
       this.buscarPeleador(idP)
     }
   }
